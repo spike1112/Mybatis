@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserDao">
+    <resultMap id="UserMap" type="User">
+        <id property="id" column="id" javaType="int"/>
+        <result property="username" column="username" javaType="String"/>
+        <result property="password" column="password" javaType="String"/>
+    </resultMap>
+
+    <select id="selectAllUsers" resultType="User">
+        SELECT * FROM app_user
+    </select>
+
+    <select id="selectById" resultType="User">
+        SELECT * FROM app_user
+        WHERE id = #{id}
+    </select>
+
+    <insert id="addUser" parameterType="User">
+        INSERT INTO app_user
+        VALUES (#{id}, #{username}, #{password}
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE app_user SET
+        username = #{username}
+        password = #{password}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeUser" parameterType="User">
+        DELETE FROM usr_app
+        WHERE
+        id = #{id} AND username = #{username} AND password = #{password}
+    </delete>
+</mapper>
